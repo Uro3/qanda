@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:12.8
+    volumes:
+      - db_data:/var/lib/postgresql/data:cached
+    environment:
+      POSTGRES_USER: qanda
+      POSTGRES_PASSWORD: password
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./qanda:/app:cached
+      - bundle_data:/usr/local/bundle
+    environment:
+      RAILS_ENV: development
+      DB_HOST: db
+      DB: qanda_dev
+      DB_USERNAME: qanda
+      DB_PASSWORD: password
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+volumes:
+  db_data:
+  bundle_data:
