@@ -30,3 +30,6 @@
 
 # Ignore bundle.
 /vendor/bundle
+
+# Ignore node_modules
+/node_modules
