@@ -4,4 +4,6 @@ class User < ApplicationRecord
          :trackable
 
   has_many :questions, dependent: :destroy
+
+  validates :name, presence: true
 end
