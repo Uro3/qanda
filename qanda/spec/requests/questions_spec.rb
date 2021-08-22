@@ -28,7 +28,7 @@ RSpec.describe "Questions", type: :request do
   end
 
   describe "GET /show" do
-    let(:question) { FactoryBot.create(:question, user_id: user.id) }
+    let(:question) { FactoryBot.create(:question, user: user) }
 
     it "returns http success" do
       get question_path(question)
