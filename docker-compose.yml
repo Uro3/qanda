@@ -15,7 +15,6 @@ services:
       - ./qanda:/app:cached
       - bundle_data:/usr/local/bundle
     environment:
-      RAILS_ENV: development
       DB_HOST: db
       DB: qanda_dev
       DB_USERNAME: qanda
